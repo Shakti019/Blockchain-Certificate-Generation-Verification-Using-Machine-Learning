@@ -1,0 +1,1322 @@
+/* Base Styles */
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --secondary: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --light: #f9fafb;
+  --dark: #1f2937;
+  --gray: #6b7280;
+  --light-gray: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Enhanced Dashboard Layout */
+.dashboard-container {
+  background: linear-gradient(135deg, #f6f9fc 0%, #edf2f7 100%);
+  min-height: 100vh;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  overflow: visible;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dashboard-header h1 {
+  color: #2c3e50;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.create-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.create-btn:hover {
+  background-color: #45a049;
+}
+
+/* Modernized Stats Cards */
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  height: auto;
+  min-height: 100px;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+.stat-card h3 {
+  color: #6c757d;
+  font-size: 1rem;
+  margin: 0 0 0.5rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-card p {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-card .stat-icon {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  font-size: 2rem;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+  opacity: 0.4;
+}
+
+/* Specific stat card styles */
+.stat-card.total {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-left: 4px solid #4CAF50;
+}
+
+.stat-card.issued {
+  background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 100%);
+  border-left: 4px solid #2196F3;
+}
+
+.stat-card.pending {
+  background: linear-gradient(135deg, #ffffff 0%, #fff3e0 100%);
+  border-left: 4px solid #FFC107;
+}
+
+.stat-card.revoked {
+  background: linear-gradient(135deg, #ffffff 0%, #ffebee 100%);
+  border-left: 4px solid #F44336;
+}
+
+/* Add loading animation for stats */
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.6; }
+}
+
+.stat-card.loading {
+  animation: pulse 1.5s infinite;
+}
+
+/* Search and Filter Controls */
+.dashboard-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  align-items: center;
+}
+
+.search-box {
+  flex: 1;
+  position: relative;
+  width: 100%;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-box input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.filter-dropdown {
+  min-width: 150px;
+}
+
+.filter-dropdown select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Enhanced Certificate Grid */
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.certificate-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  min-height: 200px;
+  padding: 1rem;
+}
+
+.certificate-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #4776E6, #8E54E9);
+  opacity: 0.8;
+}
+
+.certificate-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  padding: 1.5rem;
+  background: linear-gradient(to right, rgba(247, 250, 252, 0.8), rgba(237, 242, 247, 0.8));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 15px 15px 0 0;
+}
+
+.card-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.university-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.university-name {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-header h3 {
+  font-size: 1.2rem;
+  color: #1a202c;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Info Grid Layout */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-item label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.info-item span {
+  font-size: 0.95rem;
+  color: #1a202c;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Enhanced Status Badge */
+.status-badge {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.status-badge.issued {
+  background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+  color: #1a4731;
+}
+
+.status-badge.pending {
+  background: linear-gradient(135deg, #ffd6a5 0%, #ffedcc 100%);
+  color: #974c00;
+}
+
+.status-badge.revoked {
+  background: linear-gradient(135deg, #ffa5a5 0%, #ffe5e5 100%);
+  color: #9b1c1c;
+}
+
+/* Card Body Improvements */
+.card-body {
+  padding: 1.5rem;
+  flex: 1;
+  background: white;
+}
+
+/* Card Footer Enhancements */
+.card-footer {
+  padding: 1.25rem 1.5rem;
+  background: rgba(249, 250, 251, 0.8);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 1rem;
+  border-radius: 0 0 15px 15px;
+}
+
+/* Button Styles */
+.preview-btn, .verify-btn {
+  flex: 1;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.preview-btn {
+  background: linear-gradient(to right, #f8fafc, #f1f5f9);
+  color: #475569;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.verify-btn {
+  background: linear-gradient(to right, #4ade80, #22c55e);
+  color: white;
+  border: none;
+}
+
+.preview-btn:hover {
+  background: linear-gradient(to right, #f1f5f9, #e2e8f0);
+}
+
+.verify-btn:hover {
+  background: linear-gradient(to right, #22c55e, #16a34a);
+}
+
+/* Certificate Preview Layout */
+.certificate-preview-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: white;
+  overflow-y: auto;
+}
+
+.preview-content.side-by-side {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.certificate-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.elegant-certificate {
+  min-height: fit-content;
+  height: auto;
+  padding: 2rem;
+  background: white;
+}
+
+.certificate-inner {
+  height: auto;
+  min-height: 100%;
+  border: 2px solid #gold;
+  padding: 3rem;
+}
+
+.details-side {
+  min-width: 350px;
+  max-width: 400px;
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+.certificate-side {
+  flex: 1;
+  max-width: 1000px;
+}
+
+.preview-header {
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+  background: white;
+  z-index: 1001;
+}
+
+.close-preview-btn {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.certificate-content {
+  margin: 2rem 0;
+}
+
+.student-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.certificate-inner img {
+  max-width: 100%;
+  height: auto;
+}
+
+.certificate-header,
+.certificate-content,
+.certificate-footer {
+  margin-bottom: 2rem;
+}
+
+.certificate-details {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Certificate Details Styling */
+.certificate-details {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.details-section {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.details-section h3 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.info-item {
+  background: white;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.info-item label {
+  color: #666;
+  font-size: 0.9em;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.info-item p {
+  color: #333;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Status Indicator */
+.status-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.status-indicator {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.action-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .preview-content.side-by-side {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .certificate-side,
+  .details-side {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto 0;
+  }
+
+  .certificate-side {
+    overflow-y: visible;
+  }
+
+  .details-side {
+    height: auto;
+  }
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.empty-state img {
+  width: 200px;
+  margin-bottom: 1.5rem;
+}
+
+.empty-state h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.certificate-modal {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6c757d;
+}
+
+.modal-content {
+  padding: 1.5rem;
+}
+
+.modal-actions {
+  padding: 1.5rem;
+  border-top: 1px solid #dee2e6;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+/* Certificate Preview Styles */
+.certificate-design {
+  background: white;
+  padding: 3rem;
+  border: 2px solid #gold;
+  position: relative;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.certificate-border {
+  border: 3px solid #c4a14d;
+  padding: 2rem;
+  position: relative;
+}
+
+.certificate-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.university-logo img {
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.certificate-header h1 {
+  color: #2c3e50;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.certificate-header h2 {
+  color: #c4a14d;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.certificate-body {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.student-image {
+  width: 120px;
+  height: 120px;
+  margin: 1rem auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #c4a14d;
+}
+
+.student-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.certificate-content {
+  margin: 2rem 0;
+}
+
+.student-name {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin: 1rem 0;
+}
+
+.certificate-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.signature-section {
+  text-align: center;
+}
+
+.signature img {
+  max-width: 150px;
+  height: auto;
+}
+
+.signature-line {
+  width: 200px;
+  height: 1px;
+  background: #2c3e50;
+  margin: 0.5rem auto;
+}
+
+.seal {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #c4a14d;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  transform: rotate(-15deg);
+}
+
+.seal-content {
+  color: #c4a14d;
+  font-weight: bold;
+}
+
+.certificate-meta {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.meta-section {
+  margin-bottom: 1rem;
+}
+
+.meta-section h4 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.status {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.status.issued { color: #4CAF50; }
+.status.pending { color: #FFC107; }
+.status.revoked { color: #F44336; }
+
+/* Modal Actions */
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.download-btn, .verify-btn, .close-modal-btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.download-btn {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+}
+
+.verify-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+.close-modal-btn {
+  background-color: #e9ecef;
+  color: #495057;
+  border: none;
+}
+
+.download-btn:hover { background-color: #1976D2; }
+.verify-btn:hover { background-color: #45a049; }
+.close-modal-btn:hover { background-color: #dee2e6; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-controls {
+    flex-direction: column;
+  }
+
+  .search-box,
+  .filter-dropdown {
+    width: 100%;
+  }
+
+  .certificate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate-modal {
+    width: 95%;
+    margin: 1rem;
+  }
+}
+
+@media print {
+  .modal-header,
+  .modal-actions,
+  .certificate-meta {
+    display: none;
+  }
+  
+  .certificate-modal {
+    max-height: none;
+    overflow: visible;
+  }
+  
+  .certificate-design {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.header-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.bulk-upload-btn {
+  background-color: #6366f1;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.bulk-upload-btn:hover {
+  background-color: #4f46e5;
+}
+
+/* Add styles for button icons */
+.button-icon {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Update responsive styles */
+@media (max-width: 768px) {
+  .header-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .create-btn,
+  .bulk-upload-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Certificate Preview Page */
+./* Certificate Preview Container */
+/* Certificate Preview Overlay */
+.certificate-preview-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.certificate-preview-container {
+  background: white;
+  border-radius: 12px;
+  max-width: 1200px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.preview-header {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+  border-bottom: 1px solid #eee;
+}
+
+.close-preview-btn {
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-preview-btn:hover {
+  background: #e0e0e0;
+}
+
+.preview-content {
+  padding: 2rem;
+}
+
+/* Certificate Design */
+.certificate-design {
+  background: white;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.certificate-border {
+  border: 3px solid #c4a14d;
+  padding: 3rem;
+  position: relative;
+}
+
+.certificate-border::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 1px solid rgba(196, 161, 77, 0.3);
+  pointer-events: none;
+}
+
+.certificate-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.university-branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.logo-container {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 1rem;
+}
+
+.logo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.university-branding h1 {
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+}
+
+.certificate-title h2 {
+  font-size: 1.8rem;
+  color: #c4a14d;
+  margin: 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.ornament {
+  color: #c4a14d;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.certificate-body {
+  margin: 3rem 0;
+}
+
+.student-details {
+  text-align: center;
+}
+
+.student-photo {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #c4a14d;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.student-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main-text p {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.student-name {
+  font-size: 2.5rem;
+  color: #222;
+  margin: 1.5rem 0;
+  font-weight: 600;
+}
+
+.student-id {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.degree-info h4 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 1rem 0;
+}
+
+.gpa-info, .honors-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+.certificate-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.signature-area {
+  display: flex;
+  gap: 3rem;
+}
+
+.signature {
+  text-align: center;
+}
+
+.signature img {
+  height: 80px;
+  margin-bottom: 0.5rem;
+}
+
+.signature-line {
+  width: 200px;
+  height: 1px;
+  background: #333;
+  margin: 0 auto 0.5rem;
+}
+
+.signature p {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.signature small {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.seal img {
+  width: 100px;
+  height: 100px;
+}
+
+.verification-info {
+  text-align: right;
+}
+
+.verify-text {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 1rem;
+}
+
+.blockchain-hash {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #666;
+  word-break: break-all;
+  margin-top: 0.5rem;
+}
+
+.certificate-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.action-btn {
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.action-btn.download {
+  background: #4f46e5;
+  color: white;
+}
+
+.action-btn.download:hover {
+  background: #4338ca;
+}
+
+.action-btn.verify {
+  background: #10b981;
+  color: white;
+}
+
+.action-btn.verify:hover {
+  background: #0d9e6e;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .certificate-border {
+    padding: 2rem;
+  }
+  
+  .student-name {
+    font-size: 2rem;
+  }
+  
+  .degree-info h4 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .certificate-preview-overlay {
+    padding: 1rem;
+  }
+  
+  .certificate-border {
+    padding: 1.5rem;
+  }
+  
+  .certificate-footer {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .signature-area {
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .verification-info {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .certificate-actions {
+    flex-direction: column;
+  }
+  
+  .action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .certificate-border {
+    padding: 1rem;
+  }
+  
+  .university-branding h1 {
+    font-size: 1.5rem;
+  }
+  
+  .certificate-title h2 {
+    font-size: 1.3rem;
+  }
+  
+  .student-name {
+    font-size: 1.8rem;
+  }
+  
+  .main-text p {
+    font-size: 1rem;
+  }
+}
+
+/* Add smooth scrolling to the preview */
+.certificate-preview-page {
+  scroll-behavior: smooth;
+}

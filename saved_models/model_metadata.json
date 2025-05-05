@@ -1,0 +1,24 @@
+{
+    "feature_names": [
+        "Latitude",
+        "Longitude",
+        "Country_encoded",
+        "coord_in_country_bounds",
+        "city_state_match"
+    ],
+    "models": [
+        "Logistic Regression",
+        "Random Forest",
+        "SVM",
+        "KNN",
+        "XGBoost"
+    ],
+    "training_date": "2025-04-20 14:32:33",
+    "model_accuracies": {
+        "Logistic Regression": 0.880257298367145,
+        "Random Forest": 0.8644235526966848,
+        "SVM": 0.8812469074715488,
+        "KNN": 0.8723404255319149,
+        "XGBoost": 0.8624443344878773
+    }
+}
