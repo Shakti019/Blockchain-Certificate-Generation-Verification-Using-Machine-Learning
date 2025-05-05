@@ -1,0 +1,29 @@
+{
+    "feature_names": [
+        "latitude",
+        "longitude",
+        "abs_latitude",
+        "distance_from_equator",
+        "hemisphere",
+        "valid_coords",
+        "country_match",
+        "city_state_match",
+        "state_encoded",
+        "country_encoded"
+    ],
+    "models": [
+        "Logistic Regression",
+        "Random Forest",
+        "SVM",
+        "KNN",
+        "XGBoost"
+    ],
+    "training_date": "2025-04-20 14:59:11",
+    "model_accuracies": {
+        "Logistic Regression": 0.880257298367145,
+        "Random Forest": 0.867887184562098,
+        "SVM": 0.8812469074715488,
+        "KNN": 0.8723404255319149,
+        "XGBoost": 0.8624443344878773
+    }
+}
